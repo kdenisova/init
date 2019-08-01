@@ -1,2 +1,2 @@
-ifconfig | grep broadcast | cut -d " " -f6
-arp -a | grep org | cut -d " " -f2 | sed "s/(//;s/)//"
+ifconfig | grep broadcast | awk '{print $6}'
+arp -a | grep org | awk '{print $2}' | sed "s/(//;s/)//"
