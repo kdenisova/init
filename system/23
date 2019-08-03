@@ -1,0 +1,3 @@
+Graphic Session: su [user_name]
+
+SSH Session: ssh [user_name]@[host_address]
