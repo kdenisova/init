@@ -1,0 +1,20 @@
+if [ "$#" -ne 1 ] 
+then
+	echo "usage: sh $0 [username]"
+	exit 0
+else
+	USER=$(echo "$1" )
+fi
+
+if [ "$(id -u $USER)" != "$NULL" ]
+then
+    passwd -l $USER
+    if [ "$(pgrep -u $USER)" != "$NULL" ]
+    then
+        kill -9 $(pgrep -u $USER)
+    fi
+    userdel $USER
+    echo "User '$USER' has been deleted."
+else
+    exit 0
+fi
