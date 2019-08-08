@@ -1,4 +1,4 @@
-if [ "$#" -ne 1 ] 
+if [ "$#" -ne 1 ]
 then
 	echo "usage: sh $0 [username]"
 	exit 0
@@ -8,13 +8,12 @@ fi
 
 if [ "$(id -u $USER)" != "$NULL" ]
 then
-    passwd -l $USER
+    sudo passwd -l $USER
     if [ "$(pgrep -u $USER)" != "$NULL" ]
     then
-        kill -9 $(pgrep -u $USER)
+        sudo kill -9 $(pgrep -u $USER)
     fi
-    userdel $USER
-    echo "User '$USER' has been deleted."
+    sudo userdel $USER
 else
     exit 0
 fi
